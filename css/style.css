@@ -1,0 +1,12 @@
+body {
+    background-color: #8a2be2;
+}
+#game-content {
+    max-width: 324px;
+    margin: 0 auto;
+}
+.square {
+    background-color: crimson;
+    height: 27px;
+    border: 1px solid black;
+}

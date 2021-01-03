@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tetris</title>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1 class="text-center p-2">
+            Play Tetris
+        </h1>
+        <div id="game-content">
+            <div class="row line p-0 m-0"><!-- 1 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 2 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 3 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 4 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 4 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 4 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 5 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 7 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 8 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+            <div class="row line p-0 m-0"><!-- 6 row -->
+                <div class="col-1 offset-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+                <div class="col-1 square"></div>
+            </div>
+        <!-- /end game content-->
+        </div>
+    </body>
+    <script>
+
+        /* DOM */
+        const PIECE = document.getElementsByClassName('line');     
+        /* GAME LOGIC */
+        let paused = false;
+        /* PIECES */
+        let t_piece = 
+            [
+                      [0,0],
+                [1, -1],[1,0],[1,1]
+            ]
+        let o_piece = 
+            [
+                [0,0],[0,1],
+                [1,0],[1,1]
+            ]
+        let i_piece = 
+            [
+                [0, 0],
+                [1, 0],
+                [2, 0],
+                [3, 0],
+            ]      
+        let z_piece = 
+            [   
+                    [0, 0],[0, 1],
+                [1, -1],[1, 0]
+            ];
+        let l_piece = 
+            [
+                [0, 0],
+                [1, 0],
+                [2, 0],[2, 1]
+            ];
+ 
+        const PIECES = [t_piece, o_piece, i_piece, z_piece, l_piece];
+        let pieces_lgth = PIECES.length;
+       
+        /* On a encore du boulot dessus */
+        function currentPieces() {
+            return current_pieces = 
+                [
+                    PIECES[getRandomInt(pieces_lgth)], 
+                    PIECES[getRandomInt(pieces_lgth)], 
+                    PIECES[getRandomInt(pieces_lgth)]
+                ];    
+        }
+            
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }    
+        
+        function gameInit (x, y, level) {  
+            currentPieces();                                              
+            game(x, y, level, paused);             
+        }
+
+        function game(intX, intY, level) { 
+            
+            let current_piece = current_pieces[0];
+
+            displayPiece(intX, intY, current_piece);                                        
+            var timer = setInterval(function(){ 
+                if (paused) return
+                removePiece(intX, intY, current_piece);
+                intX++
+                displayPiece(intX, intY, current_piece);  
+                }, level);           
+
+            document.addEventListener("keydown", function(event) {                
+                removePiece(intX, intY, current_piece)
+                if (event.keyCode == '39') { // right arrow
+                    intY++;
+                    displayPiece(intX, intY, current_piece);                         
+                }
+                else if (event.keyCode == '37') {  // left arrow
+                    intY--;
+                    displayPiece(intX, intY, current_piece);         
+                }
+                else if (event.keyCode == '40') {  // down arrow
+                    intX++;
+                    displayPiece(intX, intY, current_piece);         
+                }
+                else if (event.keyCode == '38') { // top arrow
+                    pieceRotation(intX, intY);
+                }            
+                else if (event.keyCode = '32') { // space bar
+                    if (paused == false) {
+                        paused = true; 
+                    } else {
+                        paused = false;
+                    }                 
+                }
+            });               
+        }
+
+        function pieceRotation(intX,intY) {
+            console.log(':func pieceRotation')
+        }
+        function displayPiece(intX, intY, current_piece) {          
+            for(var i = 0;i < current_piece.length; i++ ) { 
+                PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.add('bg-dark');               
+            }
+        }
+        function removePiece(intX, intY, current_piece) {
+            for(var i = 0;i < current_piece.length; i++ ) { 
+                PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.remove('bg-dark');               
+            }
+        }
+        function playerMovement (intX, intY) {alert(':func playerMovement')}
+        /* Appel de la function */
+              
+        gameInit(0, 5, 1000);
+    </script>
+</html>
+
