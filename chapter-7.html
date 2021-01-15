@@ -293,38 +293,109 @@
         </div>
     </body>
     <script>
-        
-        const PIECE = document.getElementsByClassName('line');
+
+        /* DOM */
+        const PIECE = document.getElementsByClassName('line');     
+        /* GAME LOGIC */
         let paused = false;
+        /* PIECES */
+        let t_piece = 
+            [
+                      [0,0],
+                [1, -1],[1,0],[1,1]
+            ]
+        let o_piece = 
+            [
+                [0,0],[0,1],
+                [1,0],[1,1]
+            ]
+        let i_piece = 
+            [
+                [0, 0],
+                [1, 0],
+                [2, 0],
+                [3, 0],
+            ]      
+        let s_piece = 
+            [   
+                    [0, 0],[0, 1],
+                [1, -1],[1, 0]
+            ];
+        let z_piece = 
+            [   
+                [0, -1],[0, 0],
+                    [1, 0],[1, 1]
+            ];
+        let l_piece = 
+            [
+                [0, 0],
+                [1, 0],
+                [2, 0],[2, 1]
+            ];
+ 
+        const PIECES = [t_piece, o_piece, i_piece, z_piece, l_piece, s_piece];
+        let pieces_lgth = PIECES.length;
+       
+        /* On a encore du boulot dessus */
+        function currentPieces() {
+            return current_pieces = 
+                [
+                    PIECES[getRandomInt(pieces_lgth)], 
+                    PIECES[getRandomInt(pieces_lgth)], 
+                    PIECES[getRandomInt(pieces_lgth)]
+                ];    
+        }
+            
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }    
         
-        function gameInit (x, y, level) {            
-            game(x, y, level, paused)
-            displayPiece(x,y);  
+        function gameInit (x, y, level) {  
+            currentPieces();                                              
+            game(x, y, level, paused);             
         }
 
-        function game(intX, intY, level) {           
+        function game(intX, intY, level) { 
+            
+            let current_piece = current_pieces[0];
+
+            displayPiece(intX, intY, current_piece);                                        
             var timer = setInterval(function(){ 
                 if (paused) return
-                removePiece(intX,intY);
-                intX++
-                displayPiece(intX,intY);  
+                removePiece(intX, intY, current_piece);
+                if(fixePiece(intX, intY, current_piece)) {
+                    intX++
+                } else {
+                    clearInterval(timer);
+                    fixePiece(intX, intY, current_piece)
+                }
+                displayPiece(intX, intY, current_piece);  
                 }, level);           
+
             document.addEventListener("keydown", function(event) {                
-                removePiece(intX,intY)
+                removePiece(intX, intY, current_piece)
                 if (event.keyCode == '39') { // right arrow
-                    intY++;
-                    displayPiece(intX,intY);                         
+                    if(allowMovement(intX, intY, current_piece, event.keyCode))
+                    {
+                        intY++;
+                    }           
+                    displayPiece(intX, intY, current_piece);  
                 }
                 else if (event.keyCode == '37') {  // left arrow
-                    intY--;
-                    displayPiece(intX,intY);         
+                    if(allowMovement(intX, intY, current_piece, event.keyCode)) 
+                    {
+                        intY--;
+                    }
+                    displayPiece(intX, intY, current_piece);  
                 }
                 else if (event.keyCode == '40') {  // down arrow
-                    intX++;
-                    displayPiece(intX,intY);         
+                    if(fixePiece(intX, intY, current_piece)) {
+                        intX++
+                    } 
+                    displayPiece(intX, intY, current_piece);  
                 }
                 else if (event.keyCode == '38') { // top arrow
-                    pieceRotation(intX, intY);
+                    current_piece = pieceRotation(intX, intY, current_piece);
                 }            
                 else if (event.keyCode == '32') { // space bar
                     if (paused == false) {
@@ -336,21 +407,46 @@
             });               
         }
 
-        function pieceRotation(intX, intY) {
+        function fixePiece(intX, intY, current_piece, keyCode) {
+            for(var i = 0; i < current_piece.length; i++ ) {
+                console.log(intX + current_piece[i][0])
+                if(intX + current_piece[i][0] + 1 > 22 ) {                                         
+                    game(0, 5, 100)
+                    return false;
+                }
+            }
+            return true;
+        }
+        function allowMovement(intX, intY, current_piece, keyCode){
+            let boolean = true;
+            for(var i = 0; i < current_piece.length; i++ ) {
+                console.log(intY + current_piece[i][1])
+                if((intY + current_piece[i][1])  < 1 && keyCode == '37') {                    
+                    boolean = false;         
+                } else if ((intY + current_piece[i][1]) > 8 && keyCode == '39') {
+                    boolean = false;
+                }
+            }
+            return boolean
+        }
+        function pieceRotation(intX,intY,current_piece) {
             console.log(':func pieceRotation')
+            return current_piece;
         }
-        function displayPiece(intX,intY) {
-            PIECE[intX].children[intY].classList.add('bg-dark');
+        function displayPiece(intX, intY, current_piece) {          
+            for(var i = 0;i < current_piece.length; i++ ) { 
+                PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.add('bg-dark');               
+            }
         }
-        function removePiece(intX,intY) {
-            PIECE[intX].children[intY].classList.remove('bg-dark');
+        function removePiece(intX, intY, current_piece) {
+            for(var i = 0;i < current_piece.length; i++ ) { 
+                PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.remove('bg-dark');               
+            }
         }
         function playerMovement (intX, intY) {alert(':func playerMovement')}
         /* Appel de la function */
               
         gameInit(0, 5, 1000);
-
-      
     </script>
 </html>
 
