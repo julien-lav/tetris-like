@@ -356,18 +356,19 @@
         }
 
         function game(intX, intY, level) { 
-            
+                        
             let current_piece = current_pieces[0];
-
+            
             displayPiece(intX, intY, current_piece);                                        
             var timer = setInterval(function(){ 
                 if (paused) return
                 removePiece(intX, intY, current_piece);
                 if(fixePiece(intX, intY, current_piece)) {
-                    intX++
+                    intX++;
                 } else {
+                    current_piece = [];                     
                     clearInterval(timer);
-                    fixePiece(intX, intY, current_piece)
+                    fixePiece(intX, intY, current_piece);
                 }
                 displayPiece(intX, intY, current_piece);  
                 }, level);           
@@ -406,11 +407,11 @@
                 }
             });               
         }
-
-        function fixePiece(intX, intY, current_piece, keyCode) {
-            for(var i = 0; i < current_piece.length; i++ ) {
-                console.log(intX + current_piece[i][0])
-                if(intX + current_piece[i][0] + 1 > 22 ) {                                         
+        
+        function fixePiece(intX, intY, current_piece) {
+            for(var i = 0; i < current_piece.length; i++ ) {                
+                if(intX + current_piece[i][0] + 1 > 22 ) { 
+                    piecesHandler()                                                             
                     game(0, 5, 1000)
                     return false;
                 }
@@ -418,10 +419,14 @@
             return true;
         }
 
+        function piecesHandler() { // Elise            
+            current_pieces.shift();                                 
+            current_pieces.push(PIECES[getRandomInt(pieces_lgth)]); 
+        }
+        
         function allowMovement(intX, intY, current_piece, keyCode){
             let boolean = true;
             for(var i = 0; i < current_piece.length; i++ ) {
-                console.log(intY + current_piece[i][1])
                 if((intY + current_piece[i][1])  < 1 && keyCode == '37') {                    
                     boolean = false;         
                 } else if ((intY + current_piece[i][1]) > 8 && keyCode == '39') {
