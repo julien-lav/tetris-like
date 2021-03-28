@@ -10,3 +10,6 @@ body {
     height: 27px;
     border: 1px solid black;
 }
+.bg-pink {
+    background-color: pink;
+}

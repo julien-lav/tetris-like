@@ -411,7 +411,6 @@
         }
         
         function fixePiece(intX, intY, current_piece) {
-
             for(var i = 0; i < current_piece.length; i++ ) {                
                 if(intX + current_piece[i][0] + 1 > 22 ) { 
                     lockBlocks(intX, intY, current_piece) 
@@ -462,6 +461,7 @@
             }
             return boolean
         }
+        
         function pieceRotation(intX,intY,current_piece) {
             console.log(':func pieceRotation');
             return current_piece;
