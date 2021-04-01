@@ -298,23 +298,23 @@
         const PIECE = document.getElementsByClassName('line');     
         /* GAME LOGIC */
         let paused = false;
-        /* PIECES */
+        /* MAIN PIECES */
         let t_piece = 
             [
-                      [0,0],
-                [1, -1],[1,0],[1,1]
+                      [0, 0],
+                [1, -1],[1, 0],[1, 1]
             ]
         let o_piece = 
             [
-                [0,0],[0,1],
-                [1,0],[1,1]
+                [0, 0],[0, 1],
+                [1, 0],[1, 1]
             ]
         let i_piece = 
             [
                 [0, 0],
                 [1, 0],
                 [2, 0],
-                [3, 0],
+                [3, 0]
             ]      
         let s_piece = 
             [   
@@ -326,17 +326,35 @@
                 [0, -1],[0, 0],
                     [1, 0],[1, 1]
             ];
-        let l_piece = 
+        let ll_piece = 
             [
                 [0, 0],
                 [1, 0],
                 [2, 0],[2, 1]
             ];
+        let lr_piece = 
+            [
+                     [0, 0],
+                     [1, 0],
+            [2, -1], [2, 0]
+            ];
  
-        const PIECES = [t_piece, o_piece, i_piece, z_piece, l_piece, s_piece];
+        const PIECES = [t_piece, o_piece, i_piece, z_piece, s_piece, ll_piece, lr_piece];
         let pieces_lgth = PIECES.length;
-       
-        /* On a encore du boulot dessus */
+        
+        /* TURNED PIECES */
+
+        var t_piece_2 = [[0,0],[1,0],[1,1],[2,0]]
+        var t_piece_3 = [[0,-1],[0,0],[0,1],[1,0]]
+        var t_piece_4 = [[0,0],[1,-1],[1,0],[2,0]]
+
+        let i_piece_2 = [[1,-2],[1,-1],[1,0],[1,1]]    
+        let i_piece_3 = [[0,0],[1,0],[2,0],[3,0]]    
+        let i_piece_4 = [[1,-2],[1,-1],[1,0],[1,1]]    
+
+        var T_TAB = [t_piece, t_piece_2, t_piece_3, t_piece_4];
+        var I_TAB = [i_piece, i_piece_2, i_piece_3, i_piece_4];
+
         function currentPieces() {
             return current_pieces = 
                 [
@@ -399,6 +417,7 @@
                 }
                 else if (event.keyCode == '38') { // top arrow
                     current_piece = pieceRotation(intX, intY, current_piece);
+                    displayPiece(intX, intY, current_piece);  
                 }            
                 else if (event.keyCode == '32') { // space bar
                     if (paused == false) {
@@ -411,7 +430,6 @@
         }
         
         function fixePiece(intX, intY, current_piece) {
-
             for(var i = 0; i < current_piece.length; i++ ) {                
                 if(intX + current_piece[i][0] + 1 > 22 ) { 
                     lockBlocks(intX, intY, current_piece) 
@@ -446,7 +464,7 @@
                 if((intY + current_piece[i][1])  < 1 && keyCode == '37') {                    
                     boolean = false;         
                 } 
-                if ((intY + current_piece[i][1]) > 8 && keyCode == '39') {
+                if ((intY + current_piece[i][1]) > 8 && keyCode == '39') {  
                     boolean = false;
                 }                 
                 if (PIECE[intX + current_piece[i][0]].children[intY + 1 + current_piece[i][1]]) {
@@ -462,10 +480,29 @@
             }
             return boolean
         }
-        function pieceRotation(intX,intY,current_piece) {
-            console.log(':func pieceRotation');
+        
+        function pieceRotation(intX,intY, current_piece) {
+            let TAB = [];
+            if (T_TAB.includes(current_piece)) {
+                TAB = T_TAB;
+            }
+            if (I_TAB.includes(current_piece)) {
+                TAB = I_TAB;
+            }
+
+            if (TAB.length !== 0) {
+                let index = TAB.indexOf(current_piece);
+                console.log(index);
+                if (index != 3) {
+                    current_piece = TAB[index + 1];
+                    index = 0;
+                } else {
+                    current_piece = TAB[0];
+                }                                   
+            }
             return current_piece;
         }
+
         function displayPiece(intX, intY, current_piece) {          
             for(var i = 0;i < current_piece.length; i++ ) { 
                 PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.add('bg-dark');               
@@ -478,6 +515,8 @@
         }
         function playerMovement (intX, intY) {alert(':func playerMovement')}
         /* Appel de la function */
+
+        function getName(variable){ return Object.keys(variable)[0]}
               
         gameInit(0, 5, 1000);
     </script>
