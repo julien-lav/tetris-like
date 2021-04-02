@@ -342,18 +342,38 @@
         const PIECES = [t_piece, o_piece, i_piece, z_piece, s_piece, ll_piece, lr_piece];
         let pieces_lgth = PIECES.length;
         
-        /* TURNED PIECES */
+        /* TURNED PIECES */ /* HARD CODED */
 
-        var t_piece_2 = [[0,0],[1,0],[1,1],[2,0]]
-        var t_piece_3 = [[0,-1],[0,0],[0,1],[1,0]]
-        var t_piece_4 = [[0,0],[1,-1],[1,0],[2,0]]
+        var t_piece_2 = [[0,0],[1,0],[1,1],[2,0]];
+        var t_piece_3 = [[0,-1],[0,0],[0,1],[1,0]];
+        var t_piece_4 = [[0,0],[1,-1],[1,0],[2,0]];
 
-        let i_piece_2 = [[1,-2],[1,-1],[1,0],[1,1]]    
-        let i_piece_3 = [[0,0],[1,0],[2,0],[3,0]]    
-        let i_piece_4 = [[1,-2],[1,-1],[1,0],[1,1]]    
+        let i_piece_2 = [[1,-2],[1,-1],[1,0],[1,1]];    
+        let i_piece_3 = [[0,0],[1,0],[2,0],[3,0]];    
+        let i_piece_4 = [[1,-2],[1,-1],[1,0],[1,1]];  
+        
+        let s_piece_2 = [[0,0],[1,0],[1,1],[2,1]];
+        let s_piece_3 = [[0,0],[0,1],[1,-1],[1,0]];
+        let s_piece_4 = [[0,0],[1,0],[1,1],[2,1]];
+
+        let z_piece_2 = [[0,0],[1,0],[-1,1],[-1,2]];
+        let z_piece_3 = [[0,-1],[0,0],[1,0],[1,1]];
+        let z_piece_4 = [[0,0],[1,0],[-1,1],[-1,2]];
+
+        let ll_piece_2 = [[0,-1],[0,0],[0,2],[1,-1]];
+        let ll_piece_3 = [[0,0],[0,1],[1,1],[2,1]];
+        let ll_piece_4 = [[-1,-1],[0,-1],[1,-1],[0,-1]];
+        
+        let lr_piece_2 = [[0,0],[1,0],[2,-1],[2,0]];
+        let lr_piece_3 = [[0,0],[1,0],[2,-1],[2,0]];
+        let lr_piece_4 = [[0,0],[1,0],[2,-1],[2,0]];
 
         var T_TAB = [t_piece, t_piece_2, t_piece_3, t_piece_4];
         var I_TAB = [i_piece, i_piece_2, i_piece_3, i_piece_4];
+        var S_TAB = [s_piece, s_piece_2, s_piece_3, s_piece_4];
+        var Z_TAB = [z_piece, z_piece_2, z_piece_3, z_piece_4];
+        var LL_TAB = [ll_piece, ll_piece_2, ll_piece_3, ll_piece_4];
+        var LR_TAB = [lr_piece, lr_piece_2, lr_piece_3, lr_piece_4];
 
         function currentPieces() {
             return current_pieces = 
@@ -488,6 +508,18 @@
             }
             if (I_TAB.includes(current_piece)) {
                 TAB = I_TAB;
+            }
+            if (S_TAB.includes(current_piece)) {
+                TAB = S_TAB;
+            }
+            if (Z_TAB.includes(current_piece)) {
+                TAB = Z_TAB;
+            }
+            if (LL_TAB.includes(current_piece)) {
+                TAB = LL_TAB;
+            }
+            if (LR_TAB.includes(current_piece)) {
+                TAB = LR_TAB;
             }
 
             if (TAB.length !== 0) {
