@@ -273,7 +273,7 @@
                 <div class="col-1 square"></div>
                 <div class="col-1 square"></div>
                 <div class="col-1 square"></div>
-                <div class="col-1 square"></div>
+                <div class="col-1 square"></div> 
                 <div class="col-1 square"></div>
                 <div class="col-1 square"></div>
             </div>
@@ -450,14 +450,14 @@
         }
         
         function fixePiece(intX, intY, current_piece) {
-            for(var i = 0; i < current_piece.length; i++) {                
-                if(intX + current_piece[i][0] + 1 > 22 ) { 
+            for (var i = 0; i < current_piece.length; i++) {                
+                if (intX + current_piece[i][0] + 1 > 22 ) { 
                     lockBlocks(intX, intY, current_piece) 
                     piecesHandler()                                                             
                     game(0, 5, 1000)
                     return false;
                 } 
-                else if(PIECE[intX + 1 + current_piece[i][0]].children[intY + current_piece[i][1]].classList.contains('bg-light')) {
+                else if (PIECE[intX + 1 + current_piece[i][0]].children[intY + current_piece[i][1]].classList.contains('bg-light')) {
                     lockBlocks(intX, intY, current_piece) 
                     piecesHandler()                                                             
                     game(0, 5, 1000)
@@ -474,14 +474,14 @@
         }
         
         function lockBlocks(intX, intY, current_piece) {
-            for(var i = 0; i < current_piece.length; i++ ) {
+            for (var i = 0; i < current_piece.length; i++ ) {
                 PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.add('bg-light');               
             }                        
         }
 
         function allowMovement(intX, intY, current_piece, keyCode) {
             let boolean = true;
-            for(var i = 0; i < current_piece.length; i++ ) {
+            for (var i = 0; i < current_piece.length; i++ ) {
                 if((intY + current_piece[i][1])  < 1 && keyCode == '37') {                    
                     boolean = false;         
                 } 
@@ -526,7 +526,7 @@
             if (TAB.length !== 0) {
                 let index = TAB.indexOf(current_piece);                              
                 if (index != 3) {                
-                    for(var i = 0; i < TAB[index + 1].length; i++) {     
+                    for (var i = 0; i < TAB[index + 1].length; i++) {     
                         if (PIECE[intX + TAB[index + 1][i][0]]) {
                             if (PIECE[intX + TAB[index + 1][i][0]].children[intY + TAB[index + 1][i][1]]) {             
                                 if (PIECE[intX + TAB[index + 1][i][0]].children[intY + TAB[index + 1][i][1]].classList.contains('bg-light')) {
@@ -542,7 +542,7 @@
                     current_piece = TAB[index + 1];
                     index = 0;
                 } else {
-                    for(var i = 0; i < TAB[0].length; i++) {     
+                    for (var i = 0; i < TAB[0].length; i++) {     
                         if (PIECE[intX + TAB[0][i][0]]) {
                             if (PIECE[intX + TAB[0][i][0]].children[intY + TAB[0][i][1]]) {             
                                 if (PIECE[intX + TAB[0][i][0]].children[intY + TAB[0][i][1]].classList.contains('bg-light')) {
@@ -562,13 +562,13 @@
         }
 
         function displayPiece(intX, intY, current_piece) {          
-            for(var i = 0; i < current_piece.length; i++ ) { 
+            for (var i = 0; i < current_piece.length; i++) { 
                 PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.add('bg-dark');               
             }
         }
 
         function removePiece(intX, intY, current_piece) {
-            for(var i = 0;i < current_piece.length; i++ ) { 
+            for (var i = 0;i < current_piece.length; i++) { 
                 PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.remove('bg-dark');               
             }
         }
@@ -576,10 +576,10 @@
         function checkForLines() {  
             let lines = [];
             let boolean = false;
-            for(var i = 0; i < PIECE.length; i++) {
+            for (var i = 0; i < PIECE.length; i++) {
                 let j = 0;
-                while(PIECE[i].children[j].classList.contains('bg-light')) {
-                    if(j == 9) {
+                while (PIECE[i].children[j].classList.contains('bg-light')) {
+                    if (j == 9) {
                         boolean = true;
                         lines.push(i);
                         break;
@@ -593,9 +593,9 @@
         }   
     
         function eraseAllLines(lines) {
-            for(var i = 0; i < lines.length; i++) {
+            for (var i = 0; i < lines.length; i++) {
                 let n = 0;
-                while(n < 10) {
+                while (n < 10) {
                     PIECE[lines[i]].children[n].classList.remove('bg-light');
                     n++;
                 }                
@@ -604,13 +604,13 @@
         }
 
         function reorganizeBoard(lines) {
-            for(var i = 0; i < lines.length; i++) {
+            for (var i = 0; i < lines.length; i++) {
             let n = lines[i];
-                while(n > 0) {                    
+                while (n > 0) {                    
                 let m = 0;
-                    while(m < 10) {
+                    while (m < 10) {
                         console.log([n,m]);                      
-                        if(PIECE[n - 1].children[m].classList.contains('bg-light')) {
+                        if (PIECE[n - 1].children[m].classList.contains('bg-light')) {
                             PIECE[n - 1].children[m].classList.remove('bg-light')                        
                             PIECE[n].children[m].classList.add('bg-light')
                         }
