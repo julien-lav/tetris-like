@@ -562,13 +562,13 @@
         }
 
         function displayPiece(intX, intY, current_piece) {          
-            for (var i = 0; i < current_piece.length; i++ ) { 
+            for (var i = 0; i < current_piece.length; i++) { 
                 PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.add('bg-dark');               
             }
         }
 
         function removePiece(intX, intY, current_piece) {
-            for (var i = 0;i < current_piece.length; i++ ) { 
+            for (var i = 0;i < current_piece.length; i++) { 
                 PIECE[intX + current_piece[i][0]].children[intY + current_piece[i][1]].classList.remove('bg-dark');               
             }
         }
